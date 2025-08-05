@@ -18,7 +18,10 @@ def create_batch(batch_size, group_size, game):
 
 # filter action out of completion
 def extract_action(completion: str):
-    return completion
+    import regex as re
+    clean_text = re.sub(r'<think>.*?</think>', '', completion, flags=re.DOTALL)
+
+    return clean_text
     
 # given a single scalar reward and number of turns T, return a (1, T) tensor with rewards
 def calculate_reward(reward: int, turns: int):

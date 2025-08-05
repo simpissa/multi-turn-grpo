@@ -113,7 +113,6 @@ class MultiTurnGRPOTrainer(GRPOTrainer):
             else:
                 completions = completions_text
 
-            # TODO: DO I HAVE TO WORRY ABOUT IF TENSORS ARE IN GPU OR CPU?
             self.completion_q.put({
                 "completions_text" : completions,
                 "completion_ids" : completion_ids, 

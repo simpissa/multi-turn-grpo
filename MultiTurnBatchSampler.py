@@ -45,7 +45,6 @@ class MultiTurnBatchSampler:
             env = envs[index]
 
             action = self.extract_action(completion)
-            action = "[dfs]"
 
             buffer["prompt_ids"][index].append(prompt_id)
             buffer["prompt_mask"][index].append(prompt_mask)
@@ -62,8 +61,6 @@ class MultiTurnBatchSampler:
                 reward = reward[0]
                 buffer["rewards"][index] = self.calculate_reward(reward, len(buffer["prompt_ids"][index]))
 
-        if len(remaining) == 0:
-            print("Both envs done")
         # padding
         for i in range(self.batch_size):
             if i not in remaining:
