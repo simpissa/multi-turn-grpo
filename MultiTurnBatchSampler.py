@@ -53,7 +53,7 @@ class MultiTurnBatchSampler:
 
             done, info = env.step(action=action)
             if done:
-                print(f"Batch {self.completion_turn % 2} Env {index} done")
+                # print(f"Batch {self.completion_turn % 2} Env {index} done")
                 remaining.remove(index)
                 # remaining.pop(index)
 
@@ -96,7 +96,7 @@ class MultiTurnBatchSampler:
         }
 
     def prepare_backward(self):
-        print("prepare_backward start")
+        # print("prepare_backward start")
         buffer = self.buffer[(self.completion_turn-1) % 2]
         self._reset_batch((self.completion_turn-1) % 2)
 
@@ -113,7 +113,7 @@ class MultiTurnBatchSampler:
 
         buffer["rewards"] = pad(buffer["rewards"]) # (B, T)
         # how does this padding interact with padding of the other infos 
-        print("prepare backward end")
+        # print("prepare backward end")
         return buffer
     
     def batch_done(self):

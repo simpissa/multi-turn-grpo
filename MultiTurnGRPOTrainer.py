@@ -122,14 +122,14 @@ class MultiTurnGRPOTrainer(GRPOTrainer):
                 "old_per_token_logps" : old_per_token_logps
             })
 
-            print()
-            print(f"Prompt: {prompts_text}")
-            print(f"Completion: {completions}")
-            print()
+            # print()
+            # print(f"Prompt: {prompts_text}")
+            # print(f"Completion: {completions}")
+            # print()
 
         inputs = self.training_q.get()
 
-        print("Training")
+        # print("Training")
 
         rewards = inputs.pop("rewards").to(device)
         max_turns = rewards.shape[1]

@@ -26,7 +26,7 @@ class EnvWorker():
             x = sampler.sample()
             prompt_q.put(x)
             # prompt_q.put(sampler.sample())
-            print(f"Observation: {x}")
+            # print(f"Observation: {x}")
             while not sampler.batch_done():
                 observations = sampler.sample()
                 prompt_q.put(observations)
@@ -40,9 +40,9 @@ class EnvWorker():
 
             # if not completion_q.empty(): # guard since prepare_backward should be faster than generate or batches finish at the same time
             completions = completion_q.get()
-            print(f"Completion: {completions["completions_text"]}")
+            # print(f"Completion: {completions["completions_text"]}")
             sampler.step(completions) # this assumes prepare_backward is faster (?)
 
-            print(f"Prompt Turn: {sampler.prompt_turn}")
-            print(f"Completion Turn: {sampler.completion_turn}")
+            # print(f"Prompt Turn: {sampler.prompt_turn}")
+            # print(f"Completion Turn: {sampler.completion_turn}")
             assert sampler.prompt_turn == sampler.completion_turn, "generate is slower than prepare_backward"
