@@ -101,7 +101,7 @@ if __name__ == "__main__":
         max_steps = steps,
         save_steps = 10,
         max_grad_norm = 0.1,
-        report_to = "none",
+        report_to = "wandb",
         output_dir = "outputs",
     )
     training_args.per_device_train_batch_size = 1

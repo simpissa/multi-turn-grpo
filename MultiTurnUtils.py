@@ -19,6 +19,7 @@ def create_batch(batch_size, group_size, game):
 # filter action out of completion
 def extract_action(completion: str):
     import regex as re
+    completion = completion[0]["content"] # for Qwen
     clean_text = re.sub(r'<think>.*?</think>', '', completion, flags=re.DOTALL)
 
     return clean_text
